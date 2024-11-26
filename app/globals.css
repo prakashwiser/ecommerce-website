@@ -181,6 +181,9 @@ hr,
 .width_tybe {
   width: 100%;
 }
+.home_sec_three .card{
+  cursor: pointer;
+}
 .home_sec_three .shadow:hover {
   box-shadow: 0px 10px 10px 5px rgba(0, 0, 0, 0.3) !important;
 }

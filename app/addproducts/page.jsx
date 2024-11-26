@@ -31,7 +31,7 @@ const AddProduct = () => {
         setImageData("");
         setListingType("others");
 
-        // router.push("/Products");
+        router.push("/viweproducts");
     };
 
     const handleImageChange = (e) => {
