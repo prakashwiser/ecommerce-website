@@ -8,6 +8,9 @@ import Searchbar from "./Searchbar";
 import { FiShoppingCart } from "react-icons/fi";
 import { TbSkateboard } from "react-icons/tb";
 import Link from "next/link";
+import { MdLightMode } from "react-icons/md";
+import { FiMoon } from "react-icons/fi";
+import { useState ,useMemo} from "react";
 function DropdownContent({ items }) {
   return (
     <div className="d-flex">
@@ -33,6 +36,14 @@ function DropdownContent({ items }) {
 }
 
 function Navbars() {
+  const [value, setValue] = useState("light");
+  useMemo(() => {
+    if (value === "dark") {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+  }, [value]);
   const dropdownItems = [
     [
       {
@@ -56,7 +67,7 @@ function Navbars() {
   ];
 
   return (
-    <Navbar expand="lg" className="bg-body-tertiary navbar sticky-top">
+    <Navbar expand="lg" className="bg-body-tertiary navbar sticky-top text_black">
       <Container>
         <Navbar.Brand className="fw600 d-flex gap-2" href="#">
           <span>
@@ -75,6 +86,11 @@ function Navbars() {
           <Form className="d-flex align-items-center gap-3">
             <Searchbar />
             <FiShoppingCart />
+            <Nav.Link
+              onClick={() => setValue(value === "light" ? "dark" : "light")}
+            >
+              {value === "light" ? <MdLightMode /> : <FiMoon />}
+            </Nav.Link>
             <Link
               href="./signin"
               className="btn rounded-pill bg_green text-white"
