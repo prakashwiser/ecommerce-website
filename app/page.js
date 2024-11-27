@@ -8,7 +8,7 @@ import { GiConverseShoe, GiHeadphones } from "react-icons/gi";
 import { FaArrowRight, FaGithub } from "react-icons/fa";
 import { PiShoppingCart, PiTShirtDuotone } from "react-icons/pi";
 import axios from "axios";
-import MainLayouts from "./Layout/MainLayout";
+import MainLayout from "./Layout/MainLayout";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "./components/Image";
@@ -61,7 +61,7 @@ export default function Home() {
   let LengthData = filteredData.length;
   return (
     <>
-      <MainLayouts>
+      <section>
         <div className="home_sec_one mb-5 postion-relative">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -118,8 +118,8 @@ export default function Home() {
             </Container>
           </div>
         </div>
-      </MainLayouts>
-      <MainLayouts>
+      </section>
+      <section>
         <div className="home_sec_two ">
           <Container>
             <h2 className="primary_color">Featured Categories</h2>
@@ -177,8 +177,8 @@ export default function Home() {
             </Row>
           </Container>
         </div>
-      </MainLayouts>
-      <MainLayouts>
+      </section>
+      <section>
         <Container>
           <div className="home_sec_three my-5">
             <h2 className="primary_color">
@@ -254,7 +254,7 @@ export default function Home() {
             )}
           </div>
         </Container>
-      </MainLayouts>
+      </section>
     </>
   );
 }
