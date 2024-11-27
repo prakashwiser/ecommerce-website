@@ -15,8 +15,6 @@ import Image from "./components/Image";
 
 export default function Home() {
   const [APIData, setAPIData] = useState([]);
-  console.log(APIData);
-  
   const [filteredData, setFilteredData] = useState([]);
   const [showAllProducts, setShowAllProducts] = useState(false);
   const [value, setValue] = useState("all");
