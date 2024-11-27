@@ -4,7 +4,6 @@ import { ImGithub } from "react-icons/im";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Link from "next/link";
 const Login = () => {
   const [apiData, setApiData] = useState([]);
   const [email, setEmail] = useState("");
@@ -20,20 +19,17 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("email: ", email);
-    console.log("password: ", password);
-
     if (email) {
       if (password) {
         let EmailData = apiData.filter((items) => items.email == email);
-        console.log("db true");
         if (EmailData.length == 0) {
           alert("can't see your email, pls register first");
-          router.push("Signup");
+          router.push("/Signup");
         } else {
           if (password == EmailData[0]?.password) {
             alert("login successfully");
-            router.push("Products");
+            localStorage.setItem("Data", EmailData);
+            // router.push("/viewproducts");
           } else {
             alert("please enter correct password");
           }

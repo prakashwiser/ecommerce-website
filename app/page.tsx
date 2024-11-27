@@ -15,8 +15,13 @@ import Image from "./components/Image";
 
 export default function Home() {
   const [APIData, setAPIData] = useState([]);
+  console.log(APIData);
+  
+  const [filteredData, setFilteredData] = useState([]);
   const [showAllProducts, setShowAllProducts] = useState(false);
+  const [value, setValue] = useState("all");
   const router = useRouter();
+
   const Giturl =
     "https://raw.githubusercontent.com/prakashwiser/ecommerce-website/refs/heads/main/app/assets/images/";
 
@@ -35,13 +40,27 @@ export default function Home() {
     GetData();
   }, []);
 
+  useEffect(() => {
+    if (value === "all") {
+      setFilteredData(APIData);
+    } else {
+      const filtered = APIData.filter((item) => item.listingType === value);
+      setFilteredData(filtered);
+    }
+  }, [value, APIData]);
+
   const handleViewAll = () => {
     setShowAllProducts(true);
   };
-  const displayedProducts = showAllProducts ? APIData : APIData.slice(0, 8);
+
+  const displayedProducts = showAllProducts
+    ? filteredData
+    : filteredData.slice(0, 8);
+
   const handleclcik = (id) => {
     router.push(`/details/${id}`);
   };
+  let LengthData = filteredData.length;
   return (
     <>
       <MainLayouts>
@@ -118,42 +137,55 @@ export default function Home() {
             </ul>
             <Row>
               <Col xs={6} md={3}>
-                <div className="shadow p-4 rounded">
+                <div
+                  className="shadow p-4 rounded"
+                  onClick={() => setValue("sketeboard")}
+                >
                   <TbSkateboard />
                   <h4>Skateboards</h4>
-                  <span>14 products</span>
+                  <span>4 products</span>
                 </div>
               </Col>
               <Col xs={6} md={3}>
-                <div className="shadow p-4 rounded">
+                <div
+                  className="shadow p-4 rounded"
+                  onClick={() => setValue("clothing")}
+                >
                   <PiTShirtDuotone />
                   <h4>Clothing</h4>
-                  <span>41 products</span>
+                  <span>9 products</span>
                 </div>
               </Col>{" "}
               <Col xs={6} md={3}>
-                <div className="shadow p-4 rounded">
+                <div
+                  className="shadow p-4 rounded"
+                  onClick={() => setValue("shoe")}
+                >
                   <GiConverseShoe />
                   <h4>Shoe</h4>
-                  <span>23 products</span>
+                  <span>8 products</span>
                 </div>
               </Col>{" "}
               <Col xs={6} md={3}>
-                <div className="shadow p-4 rounded">
+                <div
+                  className="shadow p-4 rounded"
+                  onClick={() => setValue("mobile")}
+                >
                   <GiHeadphones />
-                  <h4>Accessories</h4>
-                  <span>16 products</span>
+                  <h4>mobile</h4>
+                  <span>10 products</span>
                 </div>
               </Col>
             </Row>
           </Container>
         </div>
       </MainLayouts>
-
       <MainLayouts>
         <Container>
           <div className="home_sec_three my-5">
-            <h2 className="primary_color">Popular Products</h2>
+            <h2 className="primary_color">
+              Popular Products <span>({LengthData})</span>
+            </h2>
             <ul className="d-lg-flex justify-content-between ">
               <li>
                 <p>Explore all products we offer from around the world</p>
