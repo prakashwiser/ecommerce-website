@@ -8,7 +8,6 @@ import { GiConverseShoe, GiHeadphones } from "react-icons/gi";
 import { FaArrowRight, FaGithub } from "react-icons/fa";
 import { PiShoppingCart, PiTShirtDuotone } from "react-icons/pi";
 import axios from "axios";
-import MainLayout from "./Layout/MainLayout";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "./components/Image";

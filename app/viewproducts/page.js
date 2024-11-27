@@ -5,6 +5,7 @@ import { Button, Table } from "semantic-ui-react";
 import Link from "next/link";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "semantic-ui-css/semantic.min.css";
+import Image from "next/image";
 const Product = () => {
   const [APIData, setAPIData] = useState([]);
   console.log(data);
@@ -72,7 +73,7 @@ const Product = () => {
                       <Table.Cell>{data.price}</Table.Cell>
                       <Table.Cell>{data.piece}</Table.Cell>
                       <Table.Cell>
-                        <img
+                        <Image
                           style={{ width: "60px" }}
                           src={
                             "https://raw.githubusercontent.com/prakashwiser/ecommerce-website/refs/heads/main/app/assets/images/" +
